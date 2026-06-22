@@ -1,5 +1,4 @@
 name: Build APK
-# Trigger build
 on: [push]
 jobs:
   build:
@@ -10,6 +9,8 @@ jobs:
         uses: ArtemSBulgakov/buildozer-action@v1
         with:
           buildozer_version: stable
+        env:
+          WORK_DIR: .
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
