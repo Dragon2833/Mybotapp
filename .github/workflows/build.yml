@@ -1,14 +1,20 @@
 name: Build APK
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Build with Buildozer
-        uses: kusold/buildozer-action@v0.1
+        uses: kivy/kivy-buildozer-action@master
         with:
           buildozer_version: stable
+        env:
+          WORK_DIR: .
+          
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
